@@ -1,35 +1,20 @@
 # LeetCode Practice 🚀
 
-My personal repository for tracking LeetCode progress and documenting algorithmic insights.
+Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic logic.
 
-## 📂 Project Structure
-
-- `1-50/`: Solutions for problems 1 to 50.
-- `51-100/`: Solutions for problems 51 to 100.
-- `notes/`: General templates and data structure summaries.
+## 📂 Structure
+- `1-50/` | `51-100/` : Categorized by Problem ID.
+- `notes/` : Reusable algorithm templates.
 
 ---
 
-## 📝 Problem Template
+## 📝 Solved Problems
 
-I use the following format to document each problem I solve:
-
-### [Problem #] - [Title]
-- **Thoughts**: 
-  - Initial brainstorming and edge cases.
-  - Potential approaches (e.g., Brute Force, Divide and Conquer).
-- **Final Approach**: 
-  - The optimized logic used for the final submission.
-  - Complexity Analysis: Time $O(n)$, Space $O(n)$.
-  - Key insights or Pythonic tricks used.
-
----
-
-## 📊 Progress Log
-
-| # | Title | Difficulty | Knowledge Point | Solution |
-| :--- | :--- | :--- | :--- | :--- |
-| 0001 | [Two Sum](https://leetcode.com/problems/two-sum/) | Easy | Hash Map | [Python](./1-50/1_Two-Sum.py) |
+### 0001 - Two Sum
+- **Thoughts**: Brute force is $O(n^2)$. Optimal way is to "look back" using a Hash Map to find the complement (`target - n`).
+- **Approach**: One-pass Dictionary to store `{value: index}`.
+- **Stats**: **Time $O(n)$** | **Space $O(n)$**
+- **Ref**: [Python Solution](./1-50/1_Two-Sum.py)
 
 ---
 *Algorithm + Data Structures = Programs*
