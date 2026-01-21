@@ -52,5 +52,39 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Stats**: **Time $O(n)$** | **Space $O(n)$**
 - **Ref**: [Python Solution](./1-50/6_Zigzag-Conversion.py)
 
+### 0007 - Reverse Integer (Medium)
+- **Thoughts**: Reverse the integer by converting it to a string and using Python's slicing technique. The logic is straightforward, but the real challenge is handling environmental constraints.
+- **Approach**: 
+  - Convert the absolute value of $x$ to a string and reverse it with `[::-1]`.
+  - Explicitly check if the result falls outside the signed 32-bit range $[-2^{31}, 2^{31}-1]$.
+- **Stats**: **Time $O(\log_{10} n)$** | **Space $O(\log_{10} n)$** (due to string conversion)
+- **Ref**: [Python Solution](./1-50/7_Reverse-Integer.py)
+
+### 0008 - String to Integer (atoi) (Medium)
+- **Thoughts**: Decouple the parsing steps (whitespace -> sign -> digits) instead of using complex flag management.
+- **Approach**: 
+  - Use `lstrip()` for whitespace.Handle sign with simple indexing.
+  - Calculate the integer mathematically ($res = res \times 10 + d$) to achieve $O(1)$ extra space.
+- **Stats**: **Time $O(n)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./1-50/8_atoi.py)
+
+### 0009 - Palindrome Number (Easy)
+- **Thoughts**: Avoid string conversion by reversing only the **latter half** of the integer. 
+- **Approach**: 
+  - Handle edge cases: negative numbers and numbers ending in 0 (excluding 0 itself).
+  - Use the math property $res = res \times 10 + x \% 10$ to build the reversed half.
+  - Stop when $x \le reversed\_half$. Compare $x$ with $reversed\_half$ (and handle odd-length digits by `// 10`).
+- **Stats**: **Time $O(\log_{10} n)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./1-50/9_Palindrome-Number.py)
+
+### 0011 - Container With Most Water (Medium)
+- **Thoughts**: A brute-force $O(n^2)$ approach will timeout. The area is constrained by the shorter bar. To find a larger area, we must move the pointer pointing to the shorter bar to potentially find a taller one.
+- **Approach**: **Two Pointers**.
+  - Initialize `left` at 0 and `right` at the end of the array.
+  - Calculate area and update `max_water` in each step.
+  - Move the pointer with the smaller height inward.
+- **Stats**: **Time $O(n)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./1-50/11_Container-With-Most-Water.py)
+
 ---
 *Algorithm + Data Structures = Programs*
