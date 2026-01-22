@@ -8,7 +8,21 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 
 ---
 
-## 📝 Solved Problems
+## 🔥 LeetCode Hot 100
+
+### 🧩 Hashing
+
+### 0049 - Group Anagrams (Medium)
+- **Thoughts**: Anagrams share the same characters with the same frequencies. Using a `set` or `frozenset` as a key is insufficient as it loses frequency data (e.g., "eat" vs "eatt"). 
+- **Approach**: 
+  - Use a sorted version of the string (`"".join(sorted(s))`) as a canonical key for the hash map to group anagrams.
+  - Corrected the previous syntax error where `append` was used with square brackets `[]` instead of parentheses `()`.
+  - Implemented a "check-then-initialize" logic to prevent the dictionary from overwriting previous values.
+- **Complexity**: **Time $O(N \cdot K \log K)$** | **Space $O(N \cdot K)$**
+- **Ref**: [Python Solution](./hot100/Hashing/49_Group-Anagrams.py)
+
+
+## 📝 Solved Problems(Sequential)
 
 ### 0001 - Two Sum
 - **Thoughts**: Brute force is $O(n^2)$. Optimal way is to "look back" using a Hash Map to find the complement (`target - n`).
