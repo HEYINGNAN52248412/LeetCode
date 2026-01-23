@@ -36,6 +36,25 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(n)$** | **Space $O(n)$**
 - **Ref**: [Python Solution](./551-600/560_Subarray-Sum-Equals-K.py)
 
+### 🔗 Linked_List
+
+### 0019 - Remove Nth Node From End of List (Medium)
+- **Thoughts**: The `AttributeError` occurs because `fast` can become `None` *before* reaching the `while` loop if $n$ equals the list length.
+- **Approach**: 
+  - Use a **Dummy Node** to guarantee that `fast` always points to a valid `ListNode` object when the `while` condition is first evaluated.
+  - This effectively transforms the "remove head" edge case into a standard "remove middle" operation.
+- **Complexity**: **Time $O(L)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/19_Remove-Nth-Node.py)
+
+### 0021 - Merge Two Sorted Lists (Easy)
+- **Thoughts**: Using an iterative approach with a **Dummy Node** is the most memory-efficient way ($O(1)$ space). It avoids the complex "in-place" pointer surgery that can lead to circular references.
+- **Approach**: 
+  - Create a `dummy` node and a `curr` tracker to build the new list.
+  - In each iteration, pick the smaller node, link it to `curr.next`, and move 'curr' forward.
+  - Once one list is exhausted, link the remainder of the other list in $O(1)$ time.
+- **Complexity**: **Time $O(N + M)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/21_Merge-Two-Sorted-Lists.py)
+
 
 ## 📝 Solved Problems(Sequential)
 
