@@ -8,7 +8,36 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 
 ---
 
-## 📝 Solved Problems
+## 🔥 LeetCode Hot 100
+
+### 🧩 Hashing
+
+### 0049 - Group Anagrams (Medium)
+- **Thoughts**: Anagrams share the same characters with the same frequencies. Using a `set` or `frozenset` as a key is insufficient as it loses frequency data (e.g., "eat" vs "eatt"). 
+- **Approach**: 
+  - Use a sorted version of the string (`"".join(sorted(s))`) as a canonical key for the hash map to group anagrams.
+  - Corrected the previous syntax error where `append` was used with square brackets `[]` instead of parentheses `()`.
+  - Implemented a "check-then-initialize" logic to prevent the dictionary from overwriting previous values.
+- **Complexity**: **Time $O(N \cdot K \log K)$** | **Space $O(N \cdot K)$**
+- **Ref**: [Python Solution](./hot100/Hashing/49_Group-Anagrams.py)
+
+### 0128 - Longest Consecutive Sequence (Medium)
+- **Thoughts**: The $O(n)$ constraint rules out sorting ($O(n \log n)$). We must use a Hash Set for $O(1)$ lookups. The key is to avoid redundant checks by only starting a sequence count from its "head" (the smallest element in that sequence).
+- **Approach**: 
+  - Convert `nums` to a `set` to remove duplicates and enable fast searching.
+  - Iterate through the set. If `num - 1` is not present, it marks the start of a new consecutive sequence ("龙头" logic).
+  - Use a `while` loop to count the sequence length starting from this head. This ensures each element is visited at most twice, maintaining linear time.
+- **Complexity**: **Time $O(n)$** | **Space $O(n)$**
+- **Ref**: [Python Solution](./hot100/Hashing/128_Longest-Consecutive-Sequence.py)
+
+### 0560 - Subarray Sum Equals K (Medium)
+- **Thoughts**: Moving from $O(n^2)$ to $O(n)$ requires a Hash Map to store previously calculated prefix sums. This is a core technique for range sum queries in unsorted arrays.
+- **Approach**: Prefix Sum + Hash Map optimization. We calculate the cumulative sum and look for the specific previous sum that would result in the target $k$ when subtracted.
+- **Complexity**: **Time $O(n)$** | **Space $O(n)$**
+- **Ref**: [Python Solution](./551-600/560_Subarray-Sum-Equals-K.py)
+
+
+## 📝 Solved Problems(Sequential)
 
 ### 0001 - Two Sum
 - **Thoughts**: Brute force is $O(n^2)$. Optimal way is to "look back" using a Hash Map to find the complement (`target - n`).
