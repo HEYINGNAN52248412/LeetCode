@@ -21,6 +21,21 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N \cdot K \log K)$** | **Space $O(N \cdot K)$**
 - **Ref**: [Python Solution](./hot100/Hashing/49_Group-Anagrams.py)
 
+### 0128 - Longest Consecutive Sequence (Medium)
+- **Thoughts**: The $O(n)$ constraint rules out sorting ($O(n \log n)$). We must use a Hash Set for $O(1)$ lookups. The key is to avoid redundant checks by only starting a sequence count from its "head" (the smallest element in that sequence).
+- **Approach**: 
+  - Convert `nums` to a `set` to remove duplicates and enable fast searching.
+  - Iterate through the set. If `num - 1` is not present, it marks the start of a new consecutive sequence ("龙头" logic).
+  - Use a `while` loop to count the sequence length starting from this head. This ensures each element is visited at most twice, maintaining linear time.
+- **Complexity**: **Time $O(n)$** | **Space $O(n)$**
+- **Ref**: [Python Solution](./hot100/Hashing/128_Longest-Consecutive-Sequence.py)
+
+### 0560 - Subarray Sum Equals K (Medium)
+- **Thoughts**: Moving from $O(n^2)$ to $O(n)$ requires a Hash Map to store previously calculated prefix sums. This is a core technique for range sum queries in unsorted arrays.
+- **Approach**: Prefix Sum + Hash Map optimization. We calculate the cumulative sum and look for the specific previous sum that would result in the target $k$ when subtracted.
+- **Complexity**: **Time $O(n)$** | **Space $O(n)$**
+- **Ref**: [Python Solution](./551-600/560_Subarray-Sum-Equals-K.py)
+
 
 ## 📝 Solved Problems(Sequential)
 
