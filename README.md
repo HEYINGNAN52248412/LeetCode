@@ -55,6 +55,14 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N + M)$** | **Space $O(1)$**
 - **Ref**: [Python Solution](./hot100/Linked_List/21_Merge-Two-Sorted-Lists.py)
 
+### 0024 - Swap Nodes in Pairs (Medium)
+- **Thoughts**: The `AttributeError: 'NoneType'` often stems from incorrect short-circuit logic in the `while` loop (checking `curr.next.next` before `curr.next`).
+- **Approach**: 
+  - Use a **Dummy Node** to simplify the head swap, and maintain a strict check: `while curr.next and curr.next.next` to handle both even and odd length lists safely.
+  - Implement the three-way pointer re-assignment: `node2.next` to `node1`, `curr.next` points to `node2`, and `node1.next` to the remainder of the list (`node3`).
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/24_Swap-Nodes-in-Pairs.py)
+
 
 ## 📝 Solved Problems(Sequential)
 
