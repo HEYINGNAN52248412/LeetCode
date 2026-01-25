@@ -55,6 +55,16 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N + M)$** | **Space $O(1)$**
 - **Ref**: [Python Solution](./hot100/Linked_List/21_Merge-Two-Sorted-Lists.py)
 
+### 0023 - Merge k Sorted Lists (Hard)
+- **Thoughts**: Merging $k$ lists one by one is inefficient ($O(k^2n)$). Using a **Divide and Conquer** approach allows us to merge pairs of lists, reducing the number of merging operations to a logarithmic scale relative to $k$.
+- **Approach**: 
+  - Reuse the recursive `merge_two_lists` logic developed in Problem 21.
+  - Use an `interval` to pair up lists (e.g., merge list[0] with list[1], list[2] with list[3]). 
+  - In each pass, double the `interval` until only one merged list remains at `lists[0]`. 
+  - This effectively builds a "merging tree" structure.
+- **Complexity**: **Time $O(nk \log k)$** | **Space $O(\log k)$** (due to recursion stack of merge_two_lists and the iterative interval logic)
+- **Ref**: [Python Solution](./hot100/Linked_List/23_Merge-k-Sorted-Lists.py)
+
 ### 0024 - Swap Nodes in Pairs (Medium)
 - **Thoughts**: The `AttributeError: 'NoneType'` often stems from incorrect short-circuit logic in the `while` loop (checking `curr.next.next` before `curr.next`).
 - **Approach**: 
