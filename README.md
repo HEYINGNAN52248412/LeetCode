@@ -3,8 +3,8 @@
 Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic logic.
 
 ## 📂 Structure
+- `hot100/` : Curated solutions for the LeetCode Hot 100 Liked list.
 - `1-50/` | `51-100/` : Categorized by Problem ID.
-- `notes/` : Reusable algorithm templates.
 
 ---
 
@@ -72,6 +72,16 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
   - Implement the three-way pointer re-assignment: `node2.next` to `node1`, `curr.next` points to `node2`, and `node1.next` to the remainder of the list (`node3`).
 - **Complexity**: **Time $O(N)$** | **Space $O(1)$**
 - **Ref**: [Python Solution](./hot100/Linked_List/24_Swap-Nodes-in-Pairs.py)
+
+### 0025 - Reverse Nodes in k-Group (Hard)
+- **Thoughts**: The challenge lies in maintaining list integrity during segmented reversals. The core logic involves isolated group reversal and precise re-stitching of group boundaries.
+- **Approach**: 
+  - **Reversal Helper**: Uses a three-pointer iterative pattern to flip directionality within a $k$-length window.
+  - **Segment Control**: A scouting pointer (`curr_final`) ensures $k$ nodes exist before triggering a flip.
+  - **Re-linking**: Explicitly links the `prev_group_tail` to the `new_head` and the `new_tail` to the `remaining_list`.
+  - **Pointer Advancement**: Updates the group anchor to the `new_final` after each swap to reset the window.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/25_Reverse-k-Group.py)
 
 
 ## 📝 Solved Problems(Sequential)
