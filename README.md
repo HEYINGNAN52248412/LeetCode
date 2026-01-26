@@ -83,6 +83,15 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** | **Space $O(1)$**
 - **Ref**: [Python Solution](./hot100/Linked_List/25_Reverse-k-Group.py)
 
+### 0138 - Copy List with Random Pointer (Medium)
+- **Thoughts**: Deep copying a non-linear linked list requires a way to track the relationship between original and cloned nodes to correctly assign `random` pointers.
+- **Approach**: 
+  - **Hash Map**: Creates an $O(N)$ mapping from old to new nodes. Simple and reliable.
+  - **Interleaving (O(1) Space)**: Temporarily weaves the new nodes into the original list. This allows direct access to cloned nodes via `curr.random.next`, eliminating the need for an auxiliary map.
+  - **Index-based**: Maps nodes to indices and searches linearly. Least efficient at $O(N^2)$ time.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$** (Auxiliary)
+- **Ref**: [Python Solution](./hot100/Linked_List/138_Copy-List-with-Random-Pointer.py)
+
 
 ## 📝 Solved Problems(Sequential)
 
