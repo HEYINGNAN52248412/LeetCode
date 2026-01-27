@@ -92,6 +92,33 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** | **Space $O(1)$** (Auxiliary)
 - **Ref**: [Python Solution](./hot100/Linked_List/138_Copy-List-with-Random-Pointer.py)
 
+### 0141 - Linked List Cycle (Easy)
+- **Thoughts**: The ultimate speed limit is $O(n)$. While Hash Sets are fast in Python, the **Fast/Slow Pointer** approach is the theoretical "gold standard" for its $O(1)$ space efficiency.
+- **Approach**: 
+  - Standard: Floyd's Cycle-Finding Algorithm (Fast/Slow pointers).
+  - Optimized for Python Time: Hash Set to store visited node identities.
+  - "Destructive" Optimization: Re-linking nodes to a sentinel value to detect re-visitation in $O(n)$ time and $O(1)$ space.
+- **Complexity**: **Time $O(n)$** | **Space $O(1)$ or $O(n)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/141_Linked-List-Cycle.py)
+
+### 0142 - Linked List Cycle II (Medium)
+- **Thoughts**: Building on Floyd's Cycle-Finding Algorithm. Detecting the cycle is step one; locating the entry requires understanding the mathematical relationship $a = kL - b$.
+- **Approach**: 
+  - Phase 1: Use fast and slow pointers to find the collision point.
+  - Phase 2: Reset a new pointer to `head` and move it alongside the slow pointer at equal speed. Their meeting point is the cycle's entrance.
+  - Ensures $O(1)$ space by utilizing existing list pointers.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/142_Linked-List-Cycle-II.py)
+
+### 0146 - LRU Cache (Medium)
+- **Thoughts**: The optimal approach for $O(1)$ time is combining a **Hash Map** (for location) and a **Doubly Linked List** (for order). Attempts to avoid auxiliary space would lead to $O(N)$ lookup times, which is unacceptable for caching systems.
+- **Approach**: 
+  - Utilize a private `self.key_map` to store node references, ensuring isolation between test cases.
+  - Implement **Dummy Nodes** at both ends of the list to simplify node extraction and insertion.
+  - Maintain a `current_num` counter and decrement it upon eviction to keep the cache within bounds.
+- **Complexity**: **Time $O(1)$** | **Space $O(Capacity)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/146_LRU-Cache.py)
+
 
 ## 📝 Solved Problems(Sequential)
 

@@ -10,7 +10,7 @@ class Node:
 #smart solution: use the old-new node map refering to the relation
 #time complexity: O(N) for the while loop
 #space complexity: O(N) for maintaining the map
-"""
+
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         if not head:
@@ -40,7 +40,7 @@ class Solution:
             
 
         return new_dummy.next
-"""
+
 
 #O(1) space solution: just add the new nodes right after the old nodes. no extra space needed
 #time complexity: O(N)
