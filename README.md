@@ -119,6 +119,14 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(1)$** | **Space $O(Capacity)$**
 - **Ref**: [Python Solution](./hot100/Linked_List/146_LRU-Cache.py)
 
+### 0148 - Sort List (Medium)
+- **Thoughts**: Theoretically, splitting a list into $k$ parts (k-way merge) reduces recursion depth to $\log_k n$. However, the complexity remains $O(n \log n)$ because the cost of merging $k$ elements increases proportionally.
+- **Approach**: 
+  - Standard Merge Sort uses 2-way splitting (binary) because it is the most efficient balance for in-memory comparisons.
+  - For linked lists, the lack of random access makes $k$-way splitting even less attractive compared to the simple fast/slow pointer binary split.
+- **Complexity**: **Time $O(n \log n)$** | **Space $O(\log n)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/148_Sort-List.py)
+
 
 ## 📝 Solved Problems(Sequential)
 
