@@ -127,6 +127,34 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(n \log n)$** | **Space $O(\log n)$**
 - **Ref**: [Python Solution](./hot100/Linked_List/148_Sort-List.py)
 
+### 0160 - Intersection of Two Linked Lists (Easy)
+- **Thoughts**: The two-pointer switch strategy naturally handles non-intersecting cases because the traversal lengths $L_A + L_B$ and $L_B + L_A$ are identical. If no intersection exists, both pointers will eventually equal `None` at the same time, satisfying the loop's exit condition.
+- **Approach**: 
+  - Iteratively move `pA` and `pB`. 
+  - Reassign to the opposite head upon reaching `None`. 
+  - The loop terminates either at the intersection node or at `None`.
+- **Complexity**: **Time $O(M+N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/160_Intersection-of-Two-Linked-Lists.py)
+
+### 0206 - Reverse Linked List (Easy)
+- **Thoughts**: The foundational operation for many complex list problems (e.g., #25, #92). It demonstrates the power of iterative pointer manipulation to change list directionality without auxiliary space.
+- **Approach**: 
+  - Use a three-pointer iterative pattern (`prev`, `curr`, `temp`).
+  - Update `curr.next` to point to `prev` at each step.
+  - Carefully manage the movement of pointers to avoid losing list references.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/206_Reverse-Linked-List.py)
+
+### 0234 - Palindrome Linked List (Easy)
+- **Thoughts**: A perfect integration of basic linked list operations. To achieve $O(1)$ space, we must modify the list in-place rather than using an auxiliary array.
+- **Approach**: 
+  - **Find Mid**: Use fast/slow pointers to locate the center of the list.
+  - **Reverse Second Half**: Reverse the nodes from the midpoint to the end using the three-pointer pattern.
+  - **Compare**: Iterate through both halves simultaneously, checking for value parity.
+  - **Edge Cases**: Handles single-node or empty lists via initial guard clauses.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Linked_List/234_Palindrome-Linked-List.py)
+
 
 ## 📝 Solved Problems(Sequential)
 
