@@ -155,6 +155,38 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** | **Space $O(1)$**
 - **Ref**: [Python Solution](./hot100/Linked_List/234_Palindrome-Linked-List.py)
 
+### 👐 Two_Pointers
+
+### 0011 - Container With Most Water (Medium)
+- **Thoughts**: A classic application of the two-pointer technique combined with a greedy strategy. The key insight is that moving the pointer at the shorter height is the only way to potentially increase the area as the width decreases.
+- **Approach**: 
+  - Initialize pointers at the start (`left`) and end (`right`) of the array.
+  - Calculate area using $\min(height[left], height[right]) \times (right - left)$.
+  - Move the pointer pointing to the shorter line inward.
+  - Maintain a global `max_water` variable to track the best result found.
+- **Complexity**: **Time $O(n)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Two_Pointers/11_Container-With-Most-Water.py)
+
+### 0015 - 3Sum (Medium)
+- **Thoughts**: The prerequisite for an $O(n^2)$ two-pointer solution is a **sorted array**. The main challenge is avoiding duplicate triplets without using expensive hash sets.
+- **Approach**: 
+  - **Sorting**: Enables the two-pointer "clamping" logic.
+  - **Fixed Pointer (i)**: Iterates through the list; skip if `nums[i] == nums[i-1]`.
+  - **Moving Pointers (j, k)**: Shrink towards the middle based on the sum.
+  - **Internal De-duplication**: After finding a valid triplet, increment `j` and decrement `k` past any identical values.
+- **Complexity**: **Time $O(n^2)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Two_Pointers/15_3-Sum.py)
+
+### 0042 - Trapping Rain Water (Hard)
+- **Thoughts**: The water trapped at any position is limited by the minimum of the maximum heights to its left and right. By always moving the pointer with the smaller current height, we ensure that the historical maximum on that specific side is the true bottleneck, while the taller opposite pointer serves as a guaranteed "dam".
+- **Approach**: 
+  - Initialize `left` and `right` pointers at array ends and track `left_max` and `right_max`.
+  - Compare `height[left]` and `height[right]`; process the shorter side to maintain the bottleneck invariant.
+  - Update the side's historical max and add (`max - current_height`) to the total if the current height is lower than the max.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Two_Pointers/42_Trapping-Rain-Water.py)
+
+
 
 ## 📝 Solved Problems(Sequential)
 
