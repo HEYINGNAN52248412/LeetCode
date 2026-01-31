@@ -196,6 +196,38 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(n)$** | **Space $O(1)$**
 - **Ref**: [Python Solution](./hot100/Two_Pointers/283_Move-Zeroes.py)
 
+### 🪟Sliding_Window
+
+### 0003 - Longest Substring Without Repeating Characters (Medium)
+- **Thoughts**: A classic sliding window problem optimized with a Hash Map to store the last seen index of each character. This allows the left pointer to "jump" rather than crawl, achieving true linear time.
+- **Approach**: 
+  - Use `right` pointer to expand the window and add characters to `char_map`.
+  - When a duplicate is found, update `left` to `max(left, char_map[char] + 1)`.
+  - The `max` function is crucial to prevent the `left` pointer from moving backwards.
+  - Update `max_length` at each step: $right - left + 1$.
+- **Complexity**: **Time $O(n)$** | **Space $O(min(m, n))$** (where $m$ is the character set size).
+- **Ref**: [Python Solution](./hot100/Sliding_Window/3_Longest-Substring-Without-Repeating-Characters.py)
+
+### 0076 - Minimum Window Substring (Hard)
+- **Thoughts**: The ultimate challenge of the sliding window technique. The core optimization is replacing expensive hash map comparisons ($O(K)$) with an integer counter (`full_fill_char_nums`) to track how many unique characters in $t$ have met their required frequency.
+- **Approach**: 
+  - **Preprocessing**: Build a target frequency map for $t$ and track the number of unique characters needed.
+  - **Expansion**: Move the `right` pointer to include characters in the window, updating the `window_map` and the `full_fill_char_nums` counter whenever a requirement is precisely met.
+  - **Contraction**: While the window is "valid" (all characters satisfied), record the minimum window indices and shrink the `left` pointer to find the local optimal.
+  - **State Management**: If a character removed from the left causes it to fall below the required frequency, decrement the `full_fill_char_nums` counter.
+- **Complexity**: **Time $O(S + T)$** | **Space $O(K)$** where $K$ is the size of the character set (e.g., 52 for letters).
+- **Ref**: [Python Solution](./hot100/Sliding_Window/76_Minimum-Window-Substring.py)
+
+### 0239 - Sliding Window Maximum (Hard)
+- **Thoughts**: The Monotonic Deque is the key to solving this in linear time. By maintaining indices in a deque such that their values are strictly decreasing, we can find the maximum of any window in $O(1)$.
+- **Approach**: 
+  - Use `collections.deque` to store **indices**.
+  - **Maintain Monotonicity**: Before appending index `i`, `pop()` from the back while `nums[i] >= nums[deque[-1]]`.
+  - **Boundary Check**: If the front index is `i - k`, it's out of the window; `popleft()`.
+  - **Result Extraction**: Once the first window forms (`i >= k-1`), the current max is `nums[deque[0]]`.
+- **Complexity**: **Time $O(N)$** | **Space $O(K)$**
+- **Ref**: [Python Solution](./hot100/Sliding_Window/239_Sliding-Window-Maximum.py)
+
 
 
 ## 📝 Solved Problems(Sequential)
