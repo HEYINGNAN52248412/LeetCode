@@ -186,6 +186,16 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** | **Space $O(1)$**
 - **Ref**: [Python Solution](./hot100/Two_Pointers/42_Trapping-Rain-Water.py)
 
+### 0283 - Move Zeroes (Easy)
+- **Thoughts**: A classic application of the "Fast-Slow Pointer" technique to modify an array in-place without using extra space. By swapping instead of inserting, we maintain $O(n)$ time complexity.
+- **Approach**: 
+  - Initialize `slow = 0` to track the position where the next non-zero element should go.
+  - Use `fast` to scan the array.
+  - When `nums[fast] != 0`, swap `nums[fast]` with `nums[slow]` and increment `slow`.
+  - This effectively pushes all zeros to the end while preserving the relative order of non-zero elements.
+- **Complexity**: **Time $O(n)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Two_Pointers/283_Move-Zeroes.py)
+
 
 
 ## 📝 Solved Problems(Sequential)
