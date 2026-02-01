@@ -228,6 +228,16 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** | **Space $O(K)$**
 - **Ref**: [Python Solution](./hot100/Sliding_Window/239_Sliding-Window-Maximum.py)
 
+### 0438 - Find All Anagrams in a String (Medium)
+- **Thoughts**: This is a classic "Fixed-size Sliding Window" problem. The core idea is to maintain a frequency map of the current window and compare it with the target frequency map of string $p$.
+- **Approach**: 
+  - Initialize `p_map` with character frequencies of $p$.
+  - Slide a window of length `len(p)` over string $s$.
+  - On each step: increment the count of the new character and decrement the count of the character that just left the window.
+  - **Crucial**: If a character's count drops to zero, `del` it from the map to ensure the `==` operator works correctly between dictionaries.
+- **Complexity**: **Time $O(N)$** (where $N$ is `len(s)`, since dictionary comparison is $O(26)$) | **Space $O(1)$** (since the map size is capped by the alphabet).
+- **Ref**: [Python Solution](./hot100/Sliding_Window/438_Find-All-Anagrams-in-a-String.py)
+
 
 
 ## 📝 Solved Problems(Sequential)
