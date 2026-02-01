@@ -239,6 +239,18 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Ref**: [Python Solution](./hot100/Sliding_Window/438_Find-All-Anagrams-in-a-String.py)
 
 
+### 🤑Greedy
+
+### 0045 - Jump Game II (Medium)
+- **Thoughts**: The core greedy logic relies on "Range Expansion." We don't care about the specific intermediate landing spots, only the maximum reach each jump provides.
+- **Approach**: 
+  - `i` acts as a scout within the `current_jump_end`.
+  - `farthest` captures the best possible next step.
+  - `step` is incremented only when the current range is exhausted, signaling a mandatory jump to the next optimal range.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/Greedy/45_Jump-Game-II.py)
+
+
 
 ## 📝 Solved Problems(Sequential)
 
