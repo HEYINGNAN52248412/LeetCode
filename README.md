@@ -250,6 +250,16 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** | **Space $O(1)$**
 - **Ref**: [Python Solution](./hot100/Greedy/45_Jump-Game-II.py)
 
+### 0055 - Jump Game (Medium)
+- **Thoughts**: This problem reduces the goal to "Range Coverage" without the need to count "Range Transitions." We only care if the "scout" stays within the bounds of our maximum possible reach.
+- **Approach**: 
+  - `i` acts as a scout exploring the array tile by tile.
+  - `farthest` captures the absolute best reach discovered by the scout so far.
+  - If the scout `i` ever exceeds the `farthest` point, it means he has hit a gap he cannot jump over; return `False`.
+  - If `farthest` covers or exceeds the final index at any point, the path is confirmed; return `True`.
+- **Complexity**: **Time O(N)** | **Space O(1)**
+- **Ref**: [Python Solution](./hot100/Greedy/55_Jump-Game.py)
+
 
 
 ## 📝 Solved Problems(Sequential)
