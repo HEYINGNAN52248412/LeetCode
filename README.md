@@ -260,6 +260,25 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time O(N)** | **Space O(1)**
 - **Ref**: [Python Solution](./hot100/Greedy/55_Jump-Game.py)
 
+### 0121 - Best Time to Buy and Sell Stock (Easy)
+- **Thoughts**: The goal is to find the maximum difference between a historical minimum price and a subsequent higher price. Instead of checking all pairs ($O(N^2)$), we maintain the "global minimum" seen so far to calculate potential profit in a single pass.
+- **Approach**: 
+  - Initialize `min_price` to infinity and `max_profit` to 0.
+  - Iterate through the `prices` array once.
+  - Update `min_price` if the current day's price is lower than the recorded minimum.
+  - Otherwise, calculate the potential profit by subtracting `min_price` from the current price and update `max_profit` if this value is higher than the current maximum.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$**
+- **Ref**: [Python Solution](./hot100/DP/121_Best-Time-to-Buy-and-Sell-Stock.py)
+
+### 0763 - Partition Labels (Medium)
+- **Thoughts**: This problem utilizes a greedy "boundary extension" strategy similar to Jump Game II. To ensure each character appears in at most one part, a partition must extend at least to the last occurrence of every character it contains.
+- **Approach**: 
+  - **First Pass**: Traverse the string to build a hash map storing the last-seen index of every character.
+  - **Second Pass**: Iterate through the string and maintain a `cut_point` (boundary) representing the maximum last-seen index of all characters encountered in the current segment.
+  - **Cutting**: When the current index `i` matches the `cut_point`, it signifies that all characters within the current range have no further appearances later in the string; record the partition size and reset the start marker.
+- **Complexity**: **Time $O(N)$** | **Space $O(1)$** (The hash map stores a maximum of 26 lowercase English letters).
+- **Ref**: [Python Solution](./hot100/Greedy/763_Partition-Labels.py)
+
 
 
 ## 📝 Solved Problems(Sequential)
