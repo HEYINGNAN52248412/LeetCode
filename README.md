@@ -308,6 +308,48 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** | **Space $O(H)$** for DFS or **$O(W)$** for BFS.
 - **Ref**: [Python Solution](./hot100/Binary_Tree/101_Symmetric-Tree.py)
 
+### 0102 - Binary Tree Level Order Traversal (Medium)
+- **Thoughts**: Level order traversal is a Breadth-First Search (BFS) application. Unlike DFS which dives deep, BFS uses a FIFO queue to sweep the tree layer by layer. The "Level Isolation" trick—capturing the queue's size before the loop starts—is essential to separate nodes of different depths within a single queue.
+- **Approach**: 
+  - **Level Isolation**: In each `while` iteration, measure `len(queue)` to define the boundary of the current level.
+  - **FIFO Processing**: Use a `for` loop to `popleft()` exactly that many nodes. This ensures we "clear the floor" before moving to nodes added during the current sweep.
+  - **Child Expansion**: For each node processed, append its existing (non-null) `left` and `right` children to the back of the queue.
+  - **Collection**: Append the results of each `for` loop into the final `ans` list to maintain the nested structure.
+- **Complexity**: **Time $O(N)$** | **Space $O(W)$** ($W$ is the maximum width of the tree).
+- **Ref**: [Python Solution](./hot100/Binary_Tree/102_Level-Order-Traversal.py)
+
+### 0104 - Maximum Depth of Binary Tree (Easy)
+- **Thoughts**: While DFS (recursion) is the most concise way to find depth, BFS (Level Order) provides a literal count of the tree's layers. Iterative DFS with a stack is tricky for depth because the stack height fluctuates during backtracking and doesn't always reflect the leaf's actual depth.
+- **Approach**: 
+  - **Level-by-Level**: Use a `queue` to perform a standard BFS.
+  - **Depth Counter**: Increment a `depth` variable each time the `while queue:` loop starts a new level.
+  - **Exhaustion**: Use the `len(queue)` trick to process all nodes at the current level before moving to the next, ensuring the counter accurately reflects the number of layers traversed.
+- **Complexity**: **Time $O(N)$** | **Space $O(W)$** ($W$ is the maximum width of the tree).
+- **Ref**: [Python Solution](./hot100/Binary_Tree/104_Maximum-Depth.py)
+
+### 0105 - Construct Binary Tree from Preorder and Inorder Traversal (Medium)
+- **Thoughts**: The core logic relies on Pre-order identifying the root and In-order partitioning the tree. A common pitfall is confusing the `TreeNode` object with its `int` value during search. For efficiency, especially in UCL COMP0005 context, we recognize that In-order length dictates the split in the Pre-order array.
+- **Approach**: 
+  - **Base Case**: Return `None` if input arrays are empty.
+  - **Root Identification**: The first element of `preorder` is the root. Locate its index in `inorder` to determine subtree sizes.
+  - **Left**: Use the first `root_index` elements following the root in `preorder`.
+  - **Right**: Use the remaining elements in `preorder`.
+  - **Recursive Build**: Reconstruct the `root.left` and `root.right` by passing these partitioned slices back into the function.
+- **Complexity**: **Time $O(N^2)$** (due to `.index()` and slicing in each call) | **Space $O(N)$**. To optimize to $O(N)$ time, use a Hash Map for index lookups.
+- **Ref**: [Python Solution](./hot100/Binary_Tree/105_Construct-Tree.py)
+
+### 0108 - Convert Sorted Array to Binary Search Tree (Easy)
+- **Thoughts**: To ensure the BST is height-balanced, we must pick the median of the sorted array as the root. This ensures the number of nodes in the left and right subtrees is as equal as possible, maintaining a height of $O(\log N)$.
+- **Approach**: 
+  - **Find Mid**: Calculate the middle index `mid = len(nums) // 2`.
+  - **Root Creation**: Create a `TreeNode` using `nums[mid]`.
+  - **Divide and Conquer**: 
+    - Recursively build the `left` subtree using the slice `nums[:mid]`.
+    - Recursively build the `right` subtree using the slice `nums[mid+1:]`.
+  - **Base Case**: If the array is empty, return `None`.
+- **Complexity**: **Time $O(N)$** | **Space $O(\log N)$** (for the recursion stack, excluding the space for the tree itself).
+- **Ref**: [Python Solution](./hot100/Binary_Tree/108_Sorted-Array-To-BST.py)
+
 
 
 ## 📝 Solved Problems(Sequential)
