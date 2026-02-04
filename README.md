@@ -239,7 +239,7 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Ref**: [Python Solution](./hot100/Sliding_Window/438_Find-All-Anagrams-in-a-String.py)
 
 
-### 🤑Greedy
+### 🤑 Greedy
 
 ### 0045 - Jump Game II (Medium)
 - **Thoughts**: The core greedy logic relies on "Range Expansion." We don't care about the specific intermediate landing spots, only the maximum reach each jump provides.
@@ -278,6 +278,35 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
   - **Cutting**: When the current index `i` matches the `cut_point`, it signifies that all characters within the current range have no further appearances later in the string; record the partition size and reset the start marker.
 - **Complexity**: **Time $O(N)$** | **Space $O(1)$** (The hash map stores a maximum of 26 lowercase English letters).
 - **Ref**: [Python Solution](./hot100/Greedy/763_Partition-Labels.py)
+
+## 🌲 Binary Tree
+
+### 0094 - Binary Tree Inorder Traversal (Easy)
+- **Thoughts**: The stack simulates recursion by remembering parent nodes. A `pop()` occurs only when the inner loop hits the leftmost end (`curr is None`), signaling that the current node's left subtree is finished. Since the left side is "done," we only need to visit the node and pivot to the right.
+- **Approach**: 
+  - **Dive Left**: Use an inner `while curr:` loop to push nodes onto the stack until `curr` reaches the bottom-left `None`.
+  - **Backtrack**: The program "returns" to the parent by popping from the stack, appending its value, and moving to `curr.right`.
+  - **Repeat**: If a right child exists, the "Dive Left" process starts over for that subtree; otherwise, it pops the next parent.
+- **Complexity**: **Time $O(N)$** | **Space $O(H)$**.
+- **Ref**: [Python Solution](./hot100/Binary_Tree/94_Binary-Tree-Inorder-Traversal.py)
+
+### 0098 - Validate Binary Search Tree (Medium)
+- **Thoughts**: A tree is a valid BST if and only if its in-order traversal yields a strictly increasing sequence. We utilize the stack-based iterative traversal to verify this property in a single pass.
+- **Approach**: 
+  - **Dive Left**: Use the standard `while curr:` loop to hit the bottom-left `None`. This triggers the "Backtrack" phase by popping the stack.
+  - **The "Left is Done" Insight**: Every time we pop a node, we are returning from its left child. This ensures the entire left subtree is already verified, so we only need to compare the current value with the `prev` value and then pivot to the right.
+  - **Validation**: Initialize `prev` as `-float('inf')` to ensure the first (smallest) node doesn't trigger a false negative.
+  - **Shift**: Move to `curr.right` to continue the verification for the rest of the tree.
+- **Complexity**: **Time $O(N)$** | **Space $O(H)$**.
+- **Ref**: [Python Solution](./hot100/Binary_Tree/98_Validate-BST.py)
+
+### 0101 - Symmetric Tree (Easy)
+- **Thoughts**: A tree is symmetric if its left and right subtrees are mirrors of each other. Instead of creating lists, we compare nodes in pairs: the outer children must match, and the inner children must match.
+- **Approach**: 
+  - **Recursive (DFS)**: Use a helper function `isMirror(L, R)`. If both are null, return true; if one is null or values differ, return false. Recursively check `(L.left, R.right)` and `(L.right, R.left)`.
+  - **Iterative (BFS)**: Use a `queue` to store pairs of nodes that should be identical. Pop two nodes at a time, compare them, and push their respective children in mirrored order (outer pairs then inner pairs).
+- **Complexity**: **Time $O(N)$** | **Space $O(H)$** for DFS or **$O(W)$** for BFS.
+- **Ref**: [Python Solution](./hot100/Binary_Tree/101_Symmetric-Tree.py)
 
 
 
