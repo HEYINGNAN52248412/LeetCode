@@ -350,6 +350,36 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** | **Space $O(\log N)$** (for the recursion stack, excluding the space for the tree itself).
 - **Ref**: [Python Solution](./hot100/Binary_Tree/108_Sorted-Array-To-BST.py)
 
+### 0114 - Flatten Binary Tree to Linked List (Medium)
+- **Thoughts**: Flattening the tree into a linked list in-place follows the Pre-order traversal sequence (Root -> Left -> Right). The main challenge is managing the pointers so we don't lose children while re-linking, and ensuring every `left` pointer is set to `None`.
+- **Approach**: 
+  - **Iterative Stack**: Use a `stack` to perform a Pre-order traversal.
+  - **Re-linking**: Use a `dummy` node to keep track of the previously processed node. For each `node` popped from the stack:
+    - Link `prev.right` to the current `node`.
+    - Explicitly set `node.left = None`.
+  - **Stack Order**: Push the `right` child first, then the `left` child, so the `left` child is processed first (standard Pre-order logic).
+- **Complexity**: **Time $O(N)$** | **Space $O(H)$** (recursion/stack depth).
+- **Ref**: [Python Solution](./hot100/Binary_Tree/114_Flatten-Binary-Tree.py)
+
+### 0199 - Binary Tree Right Side View (Medium)
+- **Thoughts**: The "Right Side View" essentially asks for the last node of every level in a Breadth-First Search (BFS). By traversing the tree layer by layer, we can easily identify these nodes as they are the final elements processed in each level-specific loop.
+- **Approach**: 
+  - **Level Isolation**: Use a `deque` to perform a standard level-order traversal. For each level, capture the current size `n = len(queue)`.
+  - **Rightmost Identification**: Within the `for i in range(n)` loop, the condition `i == n-1` identifies the node that is positioned furthest to the right at that specific depth.
+  - **FIFO Queue**: Maintain strict first-in-first-out order by appending `left` then `right` children, ensuring the "last" node is truly the one on the far right.
+- **Complexity**: **Time $O(N)$** | **Space $O(W)$** (where $W$ is the maximum width of the tree).
+- **Ref**: [Python Solution](./hot100/Binary_Tree/199_Right-Side-View.py)
+
+### 0226 - Invert Binary Tree (Easy)
+- **Thoughts**: Inverting a binary tree is equivalent to creating its mirror image. The key is to swap the left and right subtrees at every single node, starting from the root and working down to the leaves.
+- **Approach**: 
+  - **Base Case**: If the `root` is `None`, there's nothing to invert, so return `None`.
+  - **Subtree Swap**: Store the current `left` and `right` children, then reassign them in reverse order (left becomes right, right becomes left).
+  - **Recursive Dive**: Recursively call the function on the new `left` and `right` children to ensure every level of the tree is flipped.
+  - **Post-swap Return**: Return the `root` once all sub-calls have finished re-linking.
+- **Complexity**: **Time $O(N)$** (every node is visited once) | **Space $O(H)$** (due to the recursion stack depth).
+- **Ref**: [Python Solution](./hot100/Binary_Tree/226_Invert-Binary-Tree.py)
+
 
 
 ## 📝 Solved Problems(Sequential)
