@@ -380,6 +380,31 @@ Algorithm insights from a UCL CS student. Focusing on efficiency and Pythonic lo
 - **Complexity**: **Time $O(N)$** (every node is visited once) | **Space $O(H)$** (due to the recursion stack depth).
 - **Ref**: [Python Solution](./hot100/Binary_Tree/226_Invert-Binary-Tree.py)
 
+### 0230 - Kth Smallest Element in a BST (Medium)
+- **Thoughts**: The key property of a Binary Search Tree (BST) is that its In-order traversal ($Left \rightarrow Root \rightarrow Right$) visits nodes in strictly increasing order.
+- **Approach**: 
+  - **Iterative In-order**: Use a `stack` to perform an in-order traversal.
+  - **Early Exit**: Keep track of the number of nodes popped from the stack. The $k$-th element popped is the $k$-th smallest value in the BST. Stop the traversal immediately and return the value to optimize time.
+- **Complexity**: **Time $O(H + k)$** | **Space $O(H)$** (where $H$ is the tree height).
+- **Ref**: [Python Solution](./hot100/Binary_Tree/230_Kth-Smallest.py)
+
+### 0236 - Lowest Common Ancestor of a Binary Tree (Medium)
+- **Thoughts**: This approach uses a bottom-up signaling mechanism. Each node reporters back to its parent whether it found $p$, $q$, or the LCA itself.
+- **Approach**: 
+  - **Base Cases**: Return `root` if it is `None`, $p$, or $q$. This initiates the "discovery flag".
+  - **Signal Collection**: Recursively search the `left` and `right` subtrees.
+  - **Junction Rule**: If both `left_subtree` and `right_subtree` return non-None, the current `root` is the LCA.
+  - **Bubbling Up**: Otherwise, return whichever subtree returned a non-None value to continue the signal propagation.
+- **Complexity**: **Time $O(N)$** | **Space $O(H)$** (recursion depth).
+- **Ref**: [Python Solution](./hot100/Binary_Tree/236_LCA.py)
+
+### 0437 - Path Sum III (Medium)
+- **Thoughts**: The Prefix Sum technique relies on mapping the cumulative sum to its frequency. A common mistake is using the node's value as the map key instead of the calculated `curr_sum`.
+- **Approach**: 
+  - **Key Correction**: Ensure the hash map tracks `curr_sum`. Using `root.val` as a key prevents the algorithm from recognizing any sub-path sums.
+  - **Strict Backtracking**: One must decrement the frequency of `curr_sum` after visiting children. Failure to do so allows prefix sums from the left branch to erroneously influence calculations in the right branch.
+- **Complexity**: **Time $O(N)$** | **Space $O(N)$**.
+- **Ref**: [Python Solution](./hot100/Binary_Tree/437_Path-Sum-III-Fixed.py)
 
 
 ## 📝 Solved Problems(Sequential)
